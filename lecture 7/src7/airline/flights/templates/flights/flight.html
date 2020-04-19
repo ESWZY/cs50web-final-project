@@ -14,6 +14,7 @@
             <ul>
                 {% for passenger in passengers %}
                     <li>{{ passenger }}</li>
+<!--                if the list is empty-->
                 {% empty %}
                     <li>No passengers</li>
                 {% endfor %}
@@ -24,7 +25,7 @@
         <h2>Add a Passenger</h2>
         <form action="{% url 'book' flight.id %}" method="post">
             {% csrf_token %}
-            <select name="passenger">
+            <select name="passenger">   <!--name="passenger" is the param name-->
                 {% for passenger in non_passengers %}
                     <option value="{{ passenger.id }}">{{ passenger }}</option>
                 {% endfor %}

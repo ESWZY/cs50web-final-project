@@ -9,12 +9,14 @@ class Airport(models.Model):
         return f"{self.city} ({self.code})"
 
 class Flight(models.Model):
+    # use airport.departures.all() to find all departures flight
     origin = models.ForeignKey(Airport, on_delete=models.CASCADE, related_name="departures")
+    # use airport.arrivals.all() to find all arrivals flight
     destination = models.ForeignKey(Airport, on_delete=models.CASCADE, related_name="arrivals")
     duration = models.IntegerField()
 
     def __str__(self):
-        return f"{self.id} - {self.origin} to {self.destination}"
+        return f"{self.id} : {self.origin} to {self.destination}"
 
 class Passenger(models.Model):
     first = models.CharField(max_length=64)
