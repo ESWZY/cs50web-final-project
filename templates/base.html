@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+        <link href="../static/S.png" rel="icon" type="image/x-icon"/>
+        <link href="../static/footer.css" rel="stylesheet">
+        <script src="../static/footer.js"></script>
+        <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <title>News Market</title>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border">
+            <a class="navbar-brand" href="/">News Market</a>
+
+            <button aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+                    class="navbar-toggler" data-target="#navbarNavDropdown" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse collapse" id="navbarNavDropdown">
+                <a class="navbar-item" href="" style="padding-left: 10px">
+                    <button class="btn btn-success" type="button">Home</button>
+                </a>
+                <a class="navbar-item" href="" style="padding-left: 10px">
+                    <button class="btn btn-success" type="button">Article Plaza</button>
+                </a>
+                <a class="navbar-item" href="" style="padding-left: 10px">
+                    <button class="btn btn-success" type="button">Become Subscriber</button>
+                </a>
+                {% if request.user.is_authenticated %}
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="#" style="padding:1px">Hello! {{ request.user.username
+                        }}&nbsp</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'customers:logout' %}" style="padding:1px">&nbspLor out</a></li>
+                </ul>
+                {% else %}
+            </div>
+            <ul class="navbar-nav ml-auto">
+                <button class="btn btn-outline" type="button"><a class="nav-link" href="/" style="padding:1px"><b>Log in</b></a>
+                </button>
+            </ul>
+            {% endif %}
+            </div>
+        </nav>
+
+        <main class="container p-5" style="margin-bottom: 150px; margin-top: 50px;">
+            {% block body %}
+            {% endblock %}
+        </main>
+
+        <footer class="site-footer bd-footer text-muted ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <h6>About</h6>
+                        <p class="text-justify">Nothing here yet~</p>
+                    </div>
+
+                    <div class="col-xs-6 col-md-3">
+                        <h6>Categories</h6>
+                        <ul class="footer-links">
+                            <li><a href="/">Search</a></li>
+                            <li><a href="/search?lucky=True">Choose a Article by GOD</a></li>
+                            <li><a href="/">None</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-xs-6 col-md-3">
+                        <h6>Quick Links</h6>
+                        <ul class="footer-links">
+                            <li><a href="mailto:wzywzy@mail.dlut.edu.cn">Feedback</a></li>
+                            <li><a href="https://github.com/ESWZY">My Github</a></li>
+                            <li>
+                                <a href="https://github.com/ESWZY/cs50web-project">This</a>
+                                <iframe frameborder="0"
+                                        height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=ESWZY&repo=cs50web-project&type=star&count=true" style="margin-left: 2px; margin-bottom:-5px;"
+                                        width="91px">
+                                </iframe>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-sm-6 col-xs-12">
+                        <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by
+                            <a href="https://github.com/ESWZY">ESWZY</a>.
+                        </p>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <ul class="social-icons">
+                            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+                            <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

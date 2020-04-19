@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h1>Login</h1>
+<div align="left" width="40%" style="padding-right: 50%;">
+    <form action="{% url 'customers:login' %}" method="post">
+		{% csrf_token %}
+		<label>Username</label>
+		<div class="form-group">
+			<input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text"/>
+		</div>
+		<label>Password</label>
+		<div class="form-group">
+			<input type="password" name="password" class="form-control" placeholder="Password" />
+		</div>
+		{% if message %}
+			<div style="color: red">
+				{{ message }}
+			</div>
+		{% endif %}
+		<button type="submit" class="btn btn-primary">Log In</button>
+	</form>
+</div>
+{% endblock %}
