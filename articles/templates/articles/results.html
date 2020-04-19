@@ -4,7 +4,7 @@
     <h3>Search Results!</h3>
 
 	{% for article in articles %}
-		<li>{{ article }}</li>
+		<li>{{ article.title }}</li>
 	{% empty %}
 		<li>No articles!</li>
     {% endfor %}

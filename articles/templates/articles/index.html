@@ -5,7 +5,8 @@
     <h3>Search for a book!</h3>
 
 	<div class="col-md-8 offset-md-2 mt-5">
-		<form action="{% url 'article:search' %}" method="POST">
+		<form action="{% url 'articles:search' %}" method="POST">
+		{% csrf_token %}
 			<div class="input-group mb-3">
 				<input type="text" class="form-control" name="query" autofocus placeholder="Query...">
 				<div class="input-group-append">

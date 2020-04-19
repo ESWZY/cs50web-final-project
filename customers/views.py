@@ -8,10 +8,7 @@ from django.urls import reverse
 def index(request):
     if not request.user.is_authenticated:
         return render(request, "login.html", {"message": None})
-    context = {
-        "user": request.user
-    }
-    return render(request, "article/index.html", context)
+    return render(request, "articles/index.html")
 
 
 def login_view(request):
