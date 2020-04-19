@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+    <h3>Search for a book!</h3>
+
+	<div class="col-md-8 offset-md-2 mt-5">
+		<form action="{% url 'article:search' %}" method="POST">
+			<div class="input-group mb-3">
+				<input type="text" class="form-control" name="query" autofocus placeholder="Query...">
+				<div class="input-group-append">
+					<span class="input-group-text"><i class="fa fa-search"></i></span>
+				</div>
+			</div>
+			<button class="btn btn-primary" style="margin-bottom: 3px; margin-top: 3px;" type="submit">SerBoo Search</button>
+			<a href="/search?lucky=True" style="margin-top: 3px; margin-bottom: 3px;" class="btn btn-primary">I'm Feeling Lucky</a>
+		</form>
+	</div>
+{% endblock %}
