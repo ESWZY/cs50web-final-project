@@ -1,21 +1,35 @@
 {% extends "base.html" %}
 
 {% block body %}
-<h3>Search Results!</h3>
-<div class="card-columns">
-	{% for article in articles %}
-			<div class="card">
-				<blockquote class="blockquote mb-0 card-body">
-					{% load poll_extras %}
-					<h5 class="card-title"><a style="color:#000000;" href="{% url 'articles:full_article' article.title|cut:" " %}">{{ article.title }}</a></h5>
-					<p class="card-text">{{ article.brief|safe }}</p>
-					{% if article.author %}
-					<i>By: {{ article.author }}</i>
-					{% endif %}
-				</blockquote>
-			</div>
-	{% empty %}
-	<p>No articles!</p>
-	{% endfor %}
-</div>
+	<div style="text-align: center;">
+		<div class="col-md-8 offset-md-2 mt-5">
+			<form action="{% url 'articles:search' %}" method="POST">
+				{% csrf_token %}
+				<div class="input-group mb-3" align="center">
+					<input type="text" class="form-control" name="query" autofocus placeholder="{{ query }}">
+					<div class="input-group-append">
+						<button class="btn btn-success" type="submit">SerBoo Search</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<hr>
+	<h3>Search Results!</h3>
+	<div class="card-columns">
+		{% for article in articles %}
+				<div class="card">
+					<blockquote class="blockquote mb-0 card-body">
+						{% load poll_extras %}
+						<h5 class="card-title"><a style="color:#000000;" href="{% url 'articles:full_article' article.title|cut:" " %}">{{ article.title }}</a></h5>
+						<p class="card-text">{{ article.brief|safe }}</p>
+						{% if article.author %}
+						<i>By: {{ article.author }}</i>
+						{% endif %}
+					</blockquote>
+				</div>
+		{% empty %}
+		<p>No articles!</p>
+		{% endfor %}
+	</div>
 {% endblock %}

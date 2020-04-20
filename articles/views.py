@@ -18,7 +18,8 @@ def search(request):
     articles3 = Article.objects.filter(pay_text__icontains=query)
     articles = articles.union(articles2, articles3)
     context = {
-        "articles": articles
+        "articles": articles,
+        "query": query,
     }
     return render(request, "articles/results.html", context)
 
