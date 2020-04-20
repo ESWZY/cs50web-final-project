@@ -37,9 +37,12 @@ def discovery(request):
     articles = articles.random(10)
     context = {
         "articles": articles,
-        "query": 'query',
+        "query": '',
     }
     return render(request, "articles/results.html", context)
 
 def upgrade(request):
-    query = request.POST[""]
+    if request.method == 'GET':
+        return render(request, "customer/subscribe.html")
+    elif request.method == 'POST':
+        pass

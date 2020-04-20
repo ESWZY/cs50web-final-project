@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="../static/app.css">
         <!--Must behind jQuery has been loaded-->
         <script src="../static/footer.js"></script>
+        <script src="../static/app.js"></script>
         <title>News Market</title>
     </head>
 
@@ -27,10 +28,10 @@
             </button>
 
             <div class="navbar-collapse collapse" id="navbarNavDropdown">
-                <a class="navbar-item" href="" style="padding-left: 10px">
+                <a class="navbar-item" href="/" style="padding-left: 10px">
                     <button class="btn btn-success" type="button">Home</button>
                 </a>
-                <a class="navbar-item" href="" style="padding-left: 10px">
+                <a class="navbar-item" href="{% url 'articles:discovery' %}" style="padding-left: 10px">
                     <button class="btn btn-success" type="button">Article Plaza</button>
                 </a>
                 <a class="navbar-item" href="" style="padding-left: 10px">
