@@ -3,24 +3,40 @@
 {% block body %}
 <div class="article__content">
     <div class="article__header">
+
         <h3 class="article__title">
             {{ article.title }}
         </h3>
+
+        {% if article.author %}
         <div class="article__author">
-            <i>{{ article.author }}</i>
+            By <i>{{ article.author }}</i>
         </div>
-        <div class="article__date">1234</div>
-        <hr>
+        {% endif %}
+
+        {% if article.date %}
+        <div class="article__date">
+            <i>{{ article.date }}</i>
+        </div>
+        {% endif %}
+        <hr style="margin: 20px">
     </div>
 
     <div class="article__body">
         {{ article.free_text|safe }}
     </div>
-    {% if request.user.sub %}
-    <hr>
-    <div class="article__body">
-        {{ article.pay_text|safe }}
-    </div>
+
+    {% if request.user.customer.sub %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <h5>Congratulations!</h5>
+            <hr style="">The paywall has been broken down!.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="article__body">
+            {{ article.pay_text|safe }}
+        </div>
     {% else %}
     <hr>
     <div style="text-align: center;">
