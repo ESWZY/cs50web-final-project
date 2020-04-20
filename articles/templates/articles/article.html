@@ -1,5 +1,45 @@
 {% extends "base.html" %}
 
 {% block body %}
-{{ article.title }}
+<div class="article__content">
+    <div class="article__header">
+        <h3 class="article__title">
+            {{ article.title }}
+        </h3>
+        <div class="article__author">
+            <i>{{ article.author }}</i>
+        </div>
+        <div class="article__date">1234</div>
+        <hr>
+    </div>
+
+    <div class="article__body">
+        {{ article.free_text|safe }}
+    </div>
+    {% if request.user.sub %}
+    <hr>
+    <div class="article__body">
+        {{ article.pay_text|safe }}
+    </div>
+    {% else %}
+    <hr>
+    <div style="text-align: center;">
+        <div style="">
+            <h5 >TO READ THE FULL STORY</h5>
+            <div class="row">
+                <button class="btn btn-primary col-6" style="margin-right:10px; " type="button">
+                    <a class="nav-link" href="/" style="color: #ffffff"><b>Subscribe</b></a>
+                </button>
+                {% if not request.user.is_authenticated %}
+                <button class="btn btn-outline-dark col-6" style="margin:10px; " type="button">
+                    <a class="nav-link" href="/" style="color: #000000"><b>Log in</b></a>
+                </button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+
 {% endblock %}
