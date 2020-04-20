@@ -22,3 +22,10 @@ def search(request):
     }
     return render(request, "articles/results.html", context)
 
+def article(request, title):
+    title = title.replace('-', ' ')
+    article = Article.objects.get(title=title)
+    context = {
+        "article": article
+    }
+    return render(request, "articles/article.html", context)
