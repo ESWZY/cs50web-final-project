@@ -12,19 +12,11 @@ def index(request):
 def search(request):
     query = request.POST["query"]
     # https://docs.djangoproject.com/en/3.0/topics/db/queries/
-    # try:
+    # Do not need try catch
     articles = Article.objects.filter(title__icontains=query)
-    # except Article.DoesNotExist:
-    #     raise Http404("Article does not exist")
-
-    # ans = []
-    # for article in articles:
-    #     item = {
-    #         'title': article.title,
-    #         'free_text': article.free_text,
-    #         'pat_text': article.pay_text
-    #     }
-    #     ans.append(item)
+    articles2 = Article.objects.filter(free_text__icontains=query)
+    articles3 = Article.objects.filter(pay_text__icontains=query)
+    articles = articles.union(articles2, articles3)
     context = {
         "articles": articles
     }
