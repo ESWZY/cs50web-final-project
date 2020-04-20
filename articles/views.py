@@ -1,6 +1,7 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render
+from django.db.models import Q
 from .models import Article
 
 
@@ -13,10 +14,11 @@ def search(request):
     query = request.POST["query"]
     # https://docs.djangoproject.com/en/3.0/topics/db/queries/
     # Do not need try catch
-    articles = Article.objects.filter(title__icontains=query)
-    articles2 = Article.objects.filter(free_text__icontains=query)
-    articles3 = Article.objects.filter(pay_text__icontains=query)
-    articles = articles.union(articles2, articles3)
+    # https://docs.djangoproject.com/en/dev/topics/db/queries/#complex-lookups-with-q-objects
+    # Use Q and , | to replace AND OR
+    articles = Article.objects.filter(Q(title__icontains=query) |
+                                      Q(free_text__icontains=query) |
+                                      Q(pay_text__icontains=query)).order_by('-id') # Notice the - before 'id'
     context = {
         "articles": articles,
         "query": query,
@@ -36,7 +38,7 @@ def discovery(request):
     # https://github.com/rremizov/django-random-queryset
     articles = articles.random(10)
     context = {
-        "articles": articles,
+        "articles": articles.order_by('-id'),
         "query": '',
     }
     return render(request, "articles/results.html", context)
