@@ -30,3 +30,16 @@ def article(request, title):
         "article": article
     }
     return render(request, "articles/article.html", context)
+
+def discovery(request):
+    articles = Article.objects.filter()
+    # https://github.com/rremizov/django-random-queryset
+    articles = articles.random(10)
+    context = {
+        "articles": articles,
+        "query": 'query',
+    }
+    return render(request, "articles/results.html", context)
+
+def upgrade(request):
+    query = request.POST[""]

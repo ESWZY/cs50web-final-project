@@ -6,7 +6,7 @@
 			<form action="{% url 'articles:search' %}" method="POST">
 				{% csrf_token %}
 				<div class="input-group mb-3" align="center">
-					<input type="text" class="form-control" name="query" autofocus placeholder="{{ query }}">
+					<input type="text" class="form-control" name="query" autofocus value="{{ query }}">
 					<div class="input-group-append">
 						<button class="btn btn-success" type="submit">SerBoo Search</button>
 					</div>
