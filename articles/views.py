@@ -43,8 +43,3 @@ def discovery(request):
     }
     return render(request, "articles/results.html", context)
 
-def upgrade(request):
-    if request.method == 'GET':
-        return render(request, "customer/subscribe.html")
-    elif request.method == 'POST':
-        pass

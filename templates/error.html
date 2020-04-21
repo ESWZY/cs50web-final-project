@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Error
+{% endblock %}
+
+{% block content %}
+    <h2>Oops, {{ message }}</h2>
+	
+	<p>Redirect to main page after <span id="totalSecond">5</span> seconds</p>
+	<script language="javascript" type="text/javascript"> 
+		var second = totalSecond.innerText; 
+		setInterval("redirect()", 1000);
+		
+		function redirect(){ 
+			totalSecond.innerText=--second; 
+			if(second<=0) 
+				location.href='/'; 
+		} 
+	</script>
+
+{% endblock %}
