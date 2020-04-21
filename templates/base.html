@@ -4,8 +4,7 @@
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1" name="viewport">
         <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-<!--        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>-->
-        <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
         <script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
         <!--Move everything after jquery-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -36,9 +35,14 @@
                 <a class="navbar-item" href="{% url 'articles:discovery' %}" style="padding-left: 10px">
                     <button class="btn btn-success" type="button">Article Plaza</button>
                 </a>
-                <a class="navbar-item" href="{% url 'customers:subscribe' %}" style="padding-left: 10px">
+                <a class="navbar-item" href="{% url 'customers:shop' %}" style="padding-left: 10px">
                     <button class="btn btn-success" type="button">Become Subscriber</button>
                 </a>
+                {% if request.user.is_staff %}
+                <a class="navbar-item" href="{% url 'admin:index' %}" style="padding-left: 10px">
+                    <button class="btn btn-success" type="button">Staff Dashboard</button>
+                </a>
+                {% endif %}
                 {% if request.user.is_authenticated %}
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link" href="#" style="padding:1px">Hello! {{ request.user.username }}&nbsp</a>
@@ -65,7 +69,9 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-6">
                         <h6>About</h6>
-                        <p class="text-justify">Nothing here yet~</p>
+                        <p class="text-justify">
+                            On this platform, readers can search for articles arbitrarily or browse the latest articles in the article plaza. For editors, articles can be uploaded in this platform, and the paywall of the articles can be set. Readers can donate to become subscribers to browse the paid article section.
+                        </p>
                     </div>
 
                     <div class="col-xs-6 col-md-3">
@@ -73,7 +79,7 @@
                         <ul class="footer-links">
                             <li><a href="/">Search</a></li>
                             <li><a href="{% url 'articles:discovery' %}">Find something new!</a></li>
-                            <li><a href="/">None</a></li>
+                            <li><a href="{% url 'customers:shop' %}">Become a subscriber</a></li>
                         </ul>
                     </div>
 

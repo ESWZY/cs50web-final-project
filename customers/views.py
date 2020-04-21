@@ -31,7 +31,7 @@ def logout_view(request):
     return render(request, "login.html", {"message": "Logged out."})
 
 
-@login_required(login_url="login")
+@login_required(login_url="/")
 def subscribe(request):
     if request.method == 'GET':
         if request.user.customer.sub:
@@ -55,7 +55,7 @@ def subscribe(request):
         return render(request, "error.html", context={"message": "Method is not allowed!"})
 
 
-@login_required(login_url="login")
+@login_required(login_url="/")
 def shop(request):
     User()
     if request.method == 'GET':
