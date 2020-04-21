@@ -133,3 +133,29 @@ Or you can run this command to shell window.
 ```shell script
 python manage.py shell
 ```
+
+# Deploy to Heroku
+
+[Heroku's filesystem is ephemeral](https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem), any changes you make to files will be lost the next time your dyno restarts, which happens frequently (<b>at least once per day</b>). 
+
+Since SQLite is a file-based database it is incompatible with Heroku.
+
+Forget it!
+
+# Deploy to PythonAnywhere
+
+It's possible to deploy on PythonAnywhere! 
+
+Tutorial article: 
+
+https://www.dj4e.com/assn/dj4e_install.md 
+
+and 
+
+https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/
+ 
+The link is here: [http://eswzy.pythonanywhere.com/](http://eswzy.pythonanywhere.com/)
+
+The final website looks like:
+
+![Deployed](/screenshot/deployed.png)
