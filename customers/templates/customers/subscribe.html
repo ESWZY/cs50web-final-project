@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block body %}
-    <div>
-        <script>
-            $(document).ready(function () {
+<div>
+    <script>
+        $(document).ready(function () {
 
             $('#searchbar').focus();
 
@@ -42,10 +42,10 @@
                         "money": dollar,
                         csrfmiddlewaretoken: '{{ csrf_token }}',
                     },
-                    success: function(data){
+                    success: function (data) {
                         alert(dollar + "$ donated, thank you!")
                     },
-                    failure: function(data){
+                    failure: function (data) {
                         alert("Not success!")
                     },
                 });
@@ -62,55 +62,55 @@
             });
 
         });
-        </script>
-        <div class="container theme-background-white main-body">
-            <div class="col-md-12">
-                <div class="row donate-bar">
-                    <div class="col-md-4 theme-blue">
-                        <h3><strong>Donate to subscribe</strong></h3>
-                        <hr>
-                        <h4><strong>Your balance: </strong>{{ request.user.customer.card_balance }}</h4>
-                    </div>
+    </script>
+    <div class="container theme-background-white main-body">
+        <div class="col-md-12">
+            <div class="row donate-bar">
+                <div class="col-md-4 theme-blue">
+                    <h3><strong>Donate to subscribe</strong></h3>
+                    <hr>
+                    <h4><strong>Your balance: </strong>{{ request.user.customer.card_balance }}</h4>
+                </div>
 
-                    <div class="col-md-8" style="text-align: center">
-                        <ul class="nav navbar-left donate-buttons" id="donate-buttons">
-                            <li>
-                                <button class="btn-donate active" data-dollars='25'>
-                                    $25
-                                </button>
-                            </li>
-                            <li>
-                                <button class="btn-donate" data-dollars='50'>
-                                    $50
-                                </button>
-                            </li>
-                            <li>
-                                <button class="btn-donate" data-dollars='100'>
-                                    $100
-                                </button>
-                            </li>
-                            <li>
-                                <button class="btn-donate" data-dollars='500'>
-                                    $500
-                                </button>
-                            </li>
-                            <li id="other">
-                                <button class="btn-donate-other" data-dollars='other' data-impact="Thank you!">
-                                    OTHER
-                                </button>
-                            </li>
-                            <li id="other-input">
-<!--                                <span>$</span>-->
-                                <input data-impact="That’s great. Thank you!">
-                            </li>
-                        </ul>
-                        <hr>
-                        <button class="btn-green" data-target="#myModal" data-toggle="modal">
-                            DONATE
-                        </button>
-                    </div>
-                </div><!--/.donate-bar-->
-            </div><!-- /.col-md-12 -->
-        </div>
+                <div class="col-md-8" style="text-align: center">
+                    <ul class="nav navbar-left donate-buttons" id="donate-buttons">
+                        <li>
+                            <button class="btn-donate active" data-dollars='25'>
+                                $25
+                            </button>
+                        </li>
+                        <li>
+                            <button class="btn-donate" data-dollars='50'>
+                                $50
+                            </button>
+                        </li>
+                        <li>
+                            <button class="btn-donate" data-dollars='100'>
+                                $100
+                            </button>
+                        </li>
+                        <li>
+                            <button class="btn-donate" data-dollars='500'>
+                                $500
+                            </button>
+                        </li>
+                        <li id="other">
+                            <button class="btn-donate-other" data-dollars='other' data-impact="Thank you!">
+                                OTHER
+                            </button>
+                        </li>
+                        <li id="other-input">
+                            <!--<span>$</span>-->
+                            <input data-impact="That’s great. Thank you!">
+                        </li>
+                    </ul>
+                    <hr>
+                    <button class="btn-green" data-target="#myModal" data-toggle="modal">
+                        DONATE
+                    </button>
+                </div>
+            </div><!--/.donate-bar-->
+        </div><!-- /.col-md-12 -->
     </div>
+</div>
 {% endblock %}

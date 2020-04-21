@@ -14,28 +14,27 @@
             <div class="form-row">
                 <div class="col-7">
                     <label for="cc">Credit Card</label>
-                    <input class="form-control" data-inputmask="'mask': '9999 9999 9999 9999'" name="cc" id="cc" type="number"/>
+                    <input class="form-control" data-inputmask="'mask': '9999 9999 9999 9999'" id="cc" name="cc"
+                           type="number"/>
                 </div>
 
                 <div class="col-5">
                     <label for="money">Charge Money</label>
-                    <input class="form-control" type="number" name="money" id="money"/>
+                    <input class="form-control" id="money" name="money" type="number"/>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col-12">
                     <label for="phone">Phone number</label>
-                    <input class="form-control" name="phone" id="phone" type="tel"/>
+                    <input class="form-control" id="phone" name="phone" type="tel"/>
                 </div>
             </div>
             <div class="form-group row" style="padding-top: 20px">
                 <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary" onclick="return handleChange2()">Submit!</button>
+                    <button class="btn btn-primary" onclick="return handleChange2()" type="submit">Submit!</button>
                 </div>
             </div>
         </form>
     </div>
 </div>
-
-
 {% endblock %}
