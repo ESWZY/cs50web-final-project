@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block body %}
-<div class="article__content">
+<div class="article__content" style="padding-bottom: 30px">
     <div class="article__header">
 
         <h3 class="article__title">
@@ -25,7 +25,7 @@
     <div class="article__body">
         {{ article.free_text|safe }}
     </div>
-
+    {% if article.pay_text != "None" %}
     {% if request.user.customer.sub %}
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <h5>Congratulations!</h5>
@@ -64,6 +64,7 @@
             {% endif %}
         </div>
     </div>
+    {% endif %}
     {% endif %}
 </div>
 

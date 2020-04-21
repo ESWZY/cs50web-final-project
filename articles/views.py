@@ -18,12 +18,13 @@ def search(request):
     # Use Q and , | to replace AND OR
     articles = Article.objects.filter(Q(title__icontains=query) |
                                       Q(free_text__icontains=query) |
-                                      Q(pay_text__icontains=query)).order_by('-id') # Notice the - before 'id'
+                                      Q(pay_text__icontains=query)).order_by('-id')  # Notice the - before 'id'
     context = {
         "articles": articles,
         "query": query,
     }
     return render(request, "articles/results.html", context)
+
 
 def article(request, title):
     title = title.replace('-', ' ')
@@ -32,6 +33,7 @@ def article(request, title):
         "article": article
     }
     return render(request, "articles/article.html", context)
+
 
 def discovery(request):
     articles = Article.objects.filter()
@@ -42,4 +44,3 @@ def discovery(request):
         "query": '',
     }
     return render(request, "articles/results.html", context)
-

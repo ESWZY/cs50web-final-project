@@ -2,8 +2,8 @@
 
 
 {% block body %}
-	<div style="text-align: center; margin-top: 30px">
-		<h3>Search for a book!</h3>
+	<div style="text-align: center; margin-top: 50px">
+		<h3>Search for articles!</h3>
 		<div class="col-md-8 offset-md-2 mt-5">
 			<form action="{% url 'articles:search' %}" method="POST">
 				{% csrf_token %}
@@ -13,7 +13,7 @@
 						<span class="input-group-text"><i class="fa fa-search"></i></span>
 					</div>
 				</div>
-				<button class="btn btn-primary" id="search" style="margin-bottom: 3px; margin-top: 3px; margin-right: 10px; width: 20%"  type="submit" onclick="return handleChange()">Search</button>
+				<button class="btn btn-primary" id="search" style="margin-bottom: 3px; margin-top: 3px; margin-right: 10px; width: 20%"  type="submit" onclick="return handleChange()">Article Search</button>
 				<a href="{% url 'articles:discovery' %}" style="margin-top: 3px; margin-bottom: 3px; margin-left: 10px; width: 20%" class="btn btn-primary">Discover</a>
 			</form>
 		</div>

@@ -35,11 +35,9 @@ def logout_view(request):
 def subscribe(request):
     if request.method == 'GET':
         if request.user.customer.sub:
-            print(1)
             context = {"message": "You are already a subscriber!"}
             return render(request, "error.html", context)
         else:
-            print(2)
             return render(request, "customers/subscribe.html")
     elif request.method == 'POST':
         money = request.POST['money']

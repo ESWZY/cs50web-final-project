@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block body %}
-<div>
+<div style="margin-top: 50px">
     <script>
         $(document).ready(function () {
 
@@ -44,6 +44,7 @@
                     },
                     success: function (data) {
                         alert(dollar + "$ donated, thank you!")
+                        location.href="{% url 'articles:discovery' %}"
                     },
                     failure: function (data) {
                         alert("Not success!")
