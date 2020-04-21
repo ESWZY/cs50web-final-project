@@ -1,5 +1,116 @@
 {% extends "base.html" %}
 
 {% block body %}
-<h1>SUBSCRIBE</h1>
+    <div>
+        <script>
+            $(document).ready(function () {
+
+            $('#searchbar').focus();
+
+            $('#donate-buttons').on('click', '.btn-donate', function (e) {
+                e.preventDefault();
+                $('.active').removeClass('active');
+                $('#other-input').hide().siblings('#other').show();
+                $(this).filter('.btn-donate').addClass("active");
+                var value = $(this).data('impact');
+                $(this).closest('div').find('p').text("" + value);
+                $('#other-input').find('input').val('');
+            });
+
+            $('.btn-green').on('click', function () {
+                var dollar;
+                var input = $('#other-input').find('input').val();
+                if (!input) {
+                    dollar = $('.active').data('dollars');
+                } else if ($.trim(input) === '' || isNaN(input)) {
+                    // empty space leaves value = 'undefined'.
+                    // Have to fix $.trim(input) == '' above so that it works.
+                    console.log('Yes');
+                    dollar = "Please enter a number.";
+                } else {
+                    dollar = input;
+                }
+                url = "{% url 'customers:subscribe' %}";
+                data = {
+                    money: dollar,
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                }
+                $.ajax({
+                    type: "POST",
+                    url: "{% url 'customers:subscribe' %}",
+                    data: {
+                        "money": dollar,
+                        csrfmiddlewaretoken: '{{ csrf_token }}',
+                    },
+                    success: function(data){
+                        alert(dollar + "$ donated, thank you!")
+                    },
+                    failure: function(data){
+                        alert("Not success!")
+                    },
+                });
+            });
+
+            $('#other').on('click', function (e) {
+                e.preventDefault();
+                var buttons = $(this).parent('#donate-buttons');
+                buttons.find('.active').removeClass('active');
+                var other = $(this).hide().siblings('#other-input');
+                other.show();
+                other.find('input').focus();
+                var oValue = other.find('input');
+            });
+
+        });
+        </script>
+        <div class="container theme-background-white main-body">
+            <div class="col-md-12">
+                <div class="row donate-bar">
+                    <div class="col-md-4 theme-blue">
+                        <h3><strong>Donate to subscribe</strong></h3>
+                        <hr>
+                        <h4><strong>Your balance: </strong>{{ request.user.customer.card_balance }}</h4>
+                    </div>
+
+                    <div class="col-md-8" style="text-align: center">
+                        <ul class="nav navbar-left donate-buttons" id="donate-buttons">
+                            <li>
+                                <button class="btn-donate active" data-dollars='25'>
+                                    $25
+                                </button>
+                            </li>
+                            <li>
+                                <button class="btn-donate" data-dollars='50'>
+                                    $50
+                                </button>
+                            </li>
+                            <li>
+                                <button class="btn-donate" data-dollars='100'>
+                                    $100
+                                </button>
+                            </li>
+                            <li>
+                                <button class="btn-donate" data-dollars='500'>
+                                    $500
+                                </button>
+                            </li>
+                            <li id="other">
+                                <button class="btn-donate-other" data-dollars='other' data-impact="Thank you!">
+                                    OTHER
+                                </button>
+                            </li>
+                            <li id="other-input">
+<!--                                <span>$</span>-->
+                                <input data-impact="That’s great. Thank you!">
+                            </li>
+                        </ul>
+                        <hr>
+                        <button class="btn-green" data-target="#myModal" data-toggle="modal">
+                            DONATE
+                        </button>
+                    </div>
+                </div><!--/.donate-bar-->
+            </div><!-- /.col-md-12 -->
+        </div>
+    </div>
 {% endblock %}

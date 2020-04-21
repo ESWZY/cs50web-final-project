@@ -1,22 +1,21 @@
 {% extends "base.html" %}
 
-{% block title %}
-    Error
-{% endblock %}
+{% block body %}
+	<div style="text-align: center; padding-top: 10%">
+		<h1>Oops, {{ message }}</h1>
 
-{% block content %}
-    <h2>Oops, {{ message }}</h2>
-	
-	<p>Redirect to main page after <span id="totalSecond">5</span> seconds</p>
-	<script language="javascript" type="text/javascript"> 
-		var second = totalSecond.innerText; 
-		setInterval("redirect()", 1000);
-		
-		function redirect(){ 
-			totalSecond.innerText=--second; 
-			if(second<=0) 
-				location.href='/'; 
-		} 
-	</script>
+		<p style="font-size: 20px">Redirect to main page after <span id="totalSecond">5</span> seconds</p>
+		<script language="javascript" type="text/javascript">
+			var second = totalSecond.innerText;
+			setInterval("redirect()", 1000);
+
+			function redirect(){
+				totalSecond.innerText=--second;
+				if(second<=0)
+					location.href='/';
+			}
+		</script>
+	</div>
+
 
 {% endblock %}

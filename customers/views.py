@@ -31,20 +31,26 @@ def logout_view(request):
     return render(request, "login.html", {"message": "Logged out."})
 
 
-class RelatedObjectDoesNotExist(object):
-    pass
-
-
 @login_required(login_url="login")
 def subscribe(request):
     if request.method == 'GET':
         if request.user.customer.sub:
+            print(1)
             context = {"message": "You are already a subscriber!"}
             return render(request, "error.html", context)
         else:
+            print(2)
             return render(request, "customers/subscribe.html")
     elif request.method == 'POST':
-        pass
+        money = request.POST['money']
+        customer = request.user.customer
+        if int(money) > customer.card_balance:
+            return HttpResponse("Your account do not have enough money yet, please recharge.")
+        else:
+            customer.card_balance -= int(money)
+            customer.sub = True
+            customer.save()
+            return HttpResponse("Congratulations! You are a subscriber now!")
     else:
         return render(request, "error.html", context={"message": "Method is not allowed!"})
 
