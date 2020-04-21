@@ -1,2 +1,4 @@
 Django
 django_random_queryset
+django-heroku
+gunicorn
