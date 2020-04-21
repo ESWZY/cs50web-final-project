@@ -40,7 +40,7 @@ If the article has the subscriber-only part, there will leave a subscribe prompt
 
 ![Article sample1](/screenshot/article_sample1.png)
 
-Besides, if you are not log in, it will also display a login prompt.
+Besides, if you are not logging in, it will also display a login prompt.
 
 ![Article sample2](/screenshot/article_sample2.png)
 
@@ -100,7 +100,7 @@ Comparing with super user, editor can only access article data.
 
 ![Editors can do](/screenshot/editor.png)
 
-The example author account is: username: "editor", password: "123editor123".
+The example editor account is: username: "editor", password: "123editor123".
 
 ## Article
 
