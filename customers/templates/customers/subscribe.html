@@ -43,8 +43,8 @@
                         csrfmiddlewaretoken: '{{ csrf_token }}',
                     },
                     success: function (data) {
-                        alert(dollar + "$ donated, thank you!")
-                        location.href="{% url 'articles:discovery' %}"
+                        alert(data)
+                        location.href="{% url 'customers:subscribe' %}"
                     },
                     failure: function (data) {
                         alert("Not success!")
