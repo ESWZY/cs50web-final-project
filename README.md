@@ -1,4 +1,4 @@
-# Final-Project
+# Final-Project ![Django CI](https://github.com/ESWZY/cs50web-final-project/workflows/Django%20CI/badge.svg) [![Travis](https://travis-ci.com/ESWZY/cs50web-final-project.svg?branch=master)](https://travis-ci.com/ESWZY/cs50web-final-project)
 
 Web Programming with Python and JavaScript
 
