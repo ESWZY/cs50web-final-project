@@ -48,7 +48,7 @@ But, how to read the full article? Don't worry, let's move on!
 
 ## Login Page
 
-Before becoming a subscriber, you need to login to allow the platform to remember you. Just input the username and password in the form below.
+Before becoming a subscriber, you need to [login](http://eswzy.pythonanywhere.com/login) to allow the platform to remember you. Just input the username and password in the form below.
 
 ![Login page](/screenshot/login.png)
 
