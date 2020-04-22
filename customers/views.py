@@ -32,29 +32,32 @@ def logout_view(request):
     return render(request, "login.html", {"message": "Logged out."})
 
 
-@login_required(login_url="/")
+@login_required(login_url="customers:login")
 def subscribe(request):
-    if request.method == 'GET':
-        if request.user.customer.sub:
-            context = {"message": "You are already a subscriber!"}
-            return render(request, "error.html", context)
+    try:
+        if request.method == 'GET':
+            if request.user.customer.sub:
+                context = {"message": "You are already a subscriber!"}
+                return render(request, "error.html", context)
+            else:
+                return render(request, "customers/subscribe.html")
+        elif request.method == 'POST':
+            money = request.POST['money']
+            customer = request.user.customer
+            if int(money) > customer.card_balance:
+                return HttpResponse("Your account do not have enough money yet, please recharge.")
+            else:
+                customer.card_balance -= int(money)
+                customer.sub = True
+                customer.save()
+                return HttpResponse("Congratulations! You are a subscriber now!")
         else:
-            return render(request, "customers/subscribe.html")
-    elif request.method == 'POST':
-        money = request.POST['money']
-        customer = request.user.customer
-        if int(money) > customer.card_balance:
-            return HttpResponse("Your account do not have enough money yet, please recharge.")
-        else:
-            customer.card_balance -= int(money)
-            customer.sub = True
-            customer.save()
-            return HttpResponse("Congratulations! You are a subscriber now!")
-    else:
-        return render(request, "error.html", context={"message": "Method is not allowed!"})
+            return render(request, "error.html", context={"message": "Method is not allowed!"})
+    except:
+        return render(request, "error.html", context={"message": "Please go to shop to recharge first!"})
 
 
-@login_required(login_url="/")
+@login_required(login_url="customers:login")
 def shop(request):
     User()
     if request.method == 'GET':

@@ -52,7 +52,7 @@
                 {% else %}
                 <div class="navbar-nav ml-auto">
                     <button class="btn btn-outline" type="button">
-                        <a class="nav-link" href="/" style="padding:1px"><b>Log in</b></a>
+                        <a class="nav-link" href="{% url 'customers:login' %}" style="padding:1px"><b>Log in</b></a>
                     </button>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                             <li><a href="/">Search</a></li>
                             <li><a href="{% url 'articles:discovery' %}">Find something new!</a></li>
                             <li><a href="{% url 'customers:shop' %}">Recharge for your account!</a></li>
-                            <li><a href="{% url 'customers:shop' %}">Become a subscriber!</a></li>
+                            <li><a href="{% url 'customers:subscribe' %}">Become a subscriber!</a></li>
                         </ul>
                     </div>
 

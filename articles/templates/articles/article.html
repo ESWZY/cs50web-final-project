@@ -29,7 +29,7 @@
     {% if request.user.customer.sub %}
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <h5>Congratulations!</h5>
-            <hr style="">The paywall has been broken down!.
+            <hr style="">The paywall has been broken down!
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -51,7 +51,7 @@
                     </div>
                     <div style="width: 50%; padding: 10px">
                         <button class="btn btn-outline-dark btn-block" type="button">
-                            <a href="/" style="color: #000000"><b>Log in</b></a>
+                            <a href="{% url 'customers:login' %}" style="color: #000000"><b>Log in</b></a>
                         </button>
                     </div>
                 </div>
