@@ -5,6 +5,7 @@ $(function () {
         if (!(contentHeight > winHeight))
             $("footer").addClass("fixed-bottom");
     }
+
     footerPosition();
     $(window).resize(footerPosition);
 });

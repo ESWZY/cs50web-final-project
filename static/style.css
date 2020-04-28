@@ -3,6 +3,7 @@ hr {
     margin-bottom: 20px;
     border-top: 1px solid #dedede
 }
+
 .article__body a, .comment__text a, .editor-preview a, .post__body a {
     border-bottom: 2px solid rgba(0, 112, 255, 0.29);
     color: #1c77e7;

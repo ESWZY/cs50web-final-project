@@ -8,7 +8,7 @@ from .models import Customer
 class ModelsTestCase(TestCase):
     def setUp(self) -> None:
         # Create users
-        alice = get_user_model().objects.create_user("alice", )
+        alice = get_user_model().objects.create_user("alice")
         bob = get_user_model().objects.create_user("bob")
         get_user_model().objects.create_user("charlie")
         get_user_model().objects.create_user("david")
