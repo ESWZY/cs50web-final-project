@@ -161,3 +161,9 @@ The link is here: [http://eswzy.pythonanywhere.com/](http://eswzy.pythonanywhere
 The final website looks like:
 
 ![Deployed](/screenshot/deployed.png)
+
+# Finally
+
+Thanks for all people make [CS50's Web Programming with Python and JavaScript](https://www.edx.org/course/cs50s-web-programming-with-python-and-javascript) possible. Especially, thanks for [Brain Yu](https://www.edx.org/bio/brian-yu)'s excellent lecture and his "great question", which motivate me to finish the course study.
+
+April 28, 2020
