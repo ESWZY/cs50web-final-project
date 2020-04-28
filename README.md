@@ -92,7 +92,7 @@ Super user can also have a [view](http://eswzy.pythonanywhere.com/admin/auth/use
 
 ## Editor
 
-Editor or author is the person who upload articles. They are in a "group" named "[Editors](http://eswzy.pythonanywhere.com/admin/auth/group/1/change/)", which only has the authority to add/change/delete/view articles in the backend dashboard.
+Editor or author is the person who can upload articles. They are in a "group" named "[Editors](http://eswzy.pythonanywhere.com/admin/auth/group/1/change/)", which only has the authority to add/change/delete/view articles in the backend dashboard.
 
 ![Editors group](/screenshot/editors_group.png)
 
@@ -106,7 +106,7 @@ The example editor account is: username: "editor", password: "123editor123".
 
 [Article](http://eswzy.pythonanywhere.com/admin/articles/article/) is one of the most important entities of the platform. Article has fields like title, author, publish date, brief, free part and full part. 
 
-Editor can only manipulate articles. If editors want the article is totally free, they can set the "Full part" as None, literally.
+Editor can only manipulate articles. If editors want the article to be totally free, they can set the "Full part" as None, literally.
 
 ![Add article](/screenshot/add_article.png)
 
@@ -126,6 +126,13 @@ When the dependent packages are installed, you can run this command to run your 
 
 ```shell script
 python manage.py runserver
+```
+
+Run those following commands to migrate database.
+
+```shell script
+python manage.py makemigrations
+python manage.py migrate
 ```
 
 Or you can run this command to shell window.
